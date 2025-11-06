@@ -137,6 +137,7 @@ const Education = () => {
   ];
 
   const allArticles = [
+    // Heart Health Articles
     {
       title: "Managing High Blood Pressure",
       category: "Heart Health",
@@ -147,6 +148,25 @@ const Education = () => {
       description: "Essential tips for controlling hypertension through diet and lifestyle changes."
     },
     {
+      title: "Understanding Cholesterol Levels",
+      category: "Heart Health",
+      duration: "6 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "Learn about good vs bad cholesterol and how to maintain healthy levels."
+    },
+    {
+      title: "Heart-Healthy Foods",
+      category: "Heart Health",
+      duration: "4 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "Discover the best foods for cardiovascular health and heart disease prevention."
+    },
+    // Diabetes Care Articles
+    {
       title: "Understanding Diabetes",
       category: "Diabetes Care",
       duration: "7 min read",
@@ -155,6 +175,25 @@ const Education = () => {
       languageCode: "en-US",
       description: "Learn about blood sugar management, symptoms, and daily care routines."
     },
+    {
+      title: "Diabetic Meal Planning",
+      category: "Diabetes Care",
+      duration: "6 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "Create balanced meal plans that help control blood sugar levels effectively."
+    },
+    {
+      title: "Preventing Diabetes Complications",
+      category: "Diabetes Care",
+      duration: "5 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "Key strategies to prevent long-term complications from diabetes."
+    },
+    // Nutrition Articles
     {
       title: "Nutrition for Rural Communities",
       category: "Nutrition",
@@ -165,6 +204,25 @@ const Education = () => {
       description: "Affordable and nutritious meal planning with locally available foods."
     },
     {
+      title: "Essential Vitamins and Minerals",
+      category: "Nutrition",
+      duration: "5 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "Understanding micronutrients your body needs for optimal health."
+    },
+    {
+      title: "Healthy Eating on a Budget",
+      category: "Nutrition",
+      duration: "4 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "Smart shopping tips and affordable nutrition strategies for families."
+    },
+    // Exercise Articles
+    {
       title: "Exercise for Beginners",
       category: "Exercise",
       duration: "5 min read",
@@ -173,6 +231,25 @@ const Education = () => {
       languageCode: "en-US",
       description: "Start your fitness journey with simple, effective exercises."
     },
+    {
+      title: "Yoga for Daily Wellness",
+      category: "Exercise",
+      duration: "6 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "Basic yoga poses and breathing exercises for physical and mental health."
+    },
+    {
+      title: "Walking for Better Health",
+      category: "Exercise",
+      duration: "4 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "How a daily walking routine can transform your health and energy levels."
+    },
+    // Maternal Health Articles
     {
       title: "Pregnancy Nutrition",
       category: "Maternal Health",
@@ -183,6 +260,25 @@ const Education = () => {
       description: "Essential nutrients and diet tips during pregnancy."
     },
     {
+      title: "Prenatal Care Basics",
+      category: "Maternal Health",
+      duration: "7 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "Important checkups and care guidelines throughout your pregnancy journey."
+    },
+    {
+      title: "Postpartum Recovery Guide",
+      category: "Maternal Health",
+      duration: "5 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "Self-care tips for new mothers during the postpartum period."
+    },
+    // Preventive Care Articles
+    {
       title: "Vaccination Schedule",
       category: "Preventive Care",
       duration: "5 min read",
@@ -190,6 +286,24 @@ const Education = () => {
       language: "English",
       languageCode: "en-US",
       description: "Complete guide to immunizations for children and adults."
+    },
+    {
+      title: "Regular Health Screenings",
+      category: "Preventive Care",
+      duration: "6 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "Essential health checkups and when you should get them done."
+    },
+    {
+      title: "Disease Prevention Strategies",
+      category: "Preventive Care",
+      duration: "5 min read",
+      audioAvailable: true,
+      language: "English",
+      languageCode: "en-US",
+      description: "Practical steps to prevent common diseases and maintain good health."
     },
   ];
 
