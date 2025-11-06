@@ -245,7 +245,14 @@ const Medicine = () => {
               </h2>
               <div className="space-y-3">
                 {activeOrders.map((order, index) => (
-                  <Card key={index} className="p-5">
+                  <Card 
+                    key={index} 
+                    className="p-5 hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-1"
+                    onClick={() => toast({
+                      title: `Order #${order.id}`,
+                      description: `Status: ${order.status} - ${order.track}`
+                    })}
+                  >
                     <div className="flex items-start justify-between mb-3">
                       <div>
                         <div className="font-bold text-foreground mb-1">Order #{order.id}</div>
@@ -269,7 +276,18 @@ const Medicine = () => {
                         <span>{order.track}</span>
                       </div>
                     </div>
-                    <Button variant="outline" size="sm" className="w-full">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toast({
+                          title: "Tracking Order",
+                          description: `Opening tracking for order #${order.id}`
+                        });
+                      }}
+                    >
                       Track Order
                     </Button>
                   </Card>
@@ -285,7 +303,14 @@ const Medicine = () => {
               </h2>
               <div className="space-y-3">
                 {upcomingRefills.map((refill, index) => (
-                  <Card key={index} className="p-5">
+                  <Card 
+                    key={index} 
+                    className="p-5 hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-1"
+                    onClick={() => toast({
+                      title: refill.medicine,
+                      description: `Refill scheduled in ${refill.daysLeft} days`
+                    })}
+                  >
                     <div className="flex items-start justify-between mb-3">
                       <div>
                         <div className="font-bold text-foreground">{refill.medicine}</div>
@@ -300,7 +325,15 @@ const Medicine = () => {
                         </span>
                       )}
                     </div>
-                    <Button variant="outline" size="sm" className="w-full">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="w-full"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        addToCart(refill.medicine);
+                      }}
+                    >
                       Refill Now
                     </Button>
                   </Card>

@@ -155,7 +155,14 @@ const Dashboard = () => {
             </h2>
             <div className="space-y-4">
               {upcomingAppointments.map((appointment, index) => (
-                <div key={index} className="p-4 rounded-lg border-2 border-border hover:border-primary transition-colors">
+                <div 
+                  key={index} 
+                  className="p-4 rounded-lg border-2 border-border hover:border-primary transition-all duration-300 cursor-pointer hover:shadow-md hover:-translate-y-1"
+                  onClick={() => toast({
+                    title: appointment.title,
+                    description: `${appointment.doctor} - ${appointment.date}`
+                  })}
+                >
                   <div className="flex items-start justify-between mb-2">
                     <div className="font-semibold text-foreground">{appointment.title}</div>
                     <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">

@@ -137,7 +137,6 @@ const Education = () => {
   ];
 
   const allArticles = [
-    // English Articles
     {
       title: "Managing High Blood Pressure",
       category: "Heart Health",
@@ -146,24 +145,6 @@ const Education = () => {
       language: "English",
       languageCode: "en-US",
       description: "Essential tips for controlling hypertension through diet and lifestyle changes."
-    },
-    {
-      title: "उच्च रक्तचाप का प्रबंधन",
-      category: "Heart Health",
-      duration: "5 min read",
-      audioAvailable: true,
-      language: "Hindi",
-      languageCode: "hi-IN",
-      description: "आहार और जीवनशैली में बदलाव के माध्यम से उच्च रक्तचाप को नियंत्रित करने के लिए आवश्यक सुझाव।"
-    },
-    {
-      title: "ಅಧಿಕ ರಕ್ತದೊತ್ತಡ ನಿರ್ವಹಣೆ",
-      category: "Heart Health",
-      duration: "5 min read",
-      audioAvailable: true,
-      language: "Kannada",
-      languageCode: "kn-IN",
-      description: "ಆಹಾರ ಮತ್ತು ಜೀವನಶೈಲಿ ಬದಲಾವಣೆಗಳ ಮೂಲಕ ಅಧಿಕ ರಕ್ತದೊತ್ತಡವನ್ನು ನಿಯಂತ್ರಿಸಲು ಅತ್ಯಗತ್ಯ ಸಲಹೆಗಳು."
     },
     {
       title: "Understanding Diabetes",
@@ -175,24 +156,6 @@ const Education = () => {
       description: "Learn about blood sugar management, symptoms, and daily care routines."
     },
     {
-      title: "मधुमेह को समझना",
-      category: "Diabetes Care",
-      duration: "7 min read",
-      audioAvailable: true,
-      language: "Hindi",
-      languageCode: "hi-IN",
-      description: "रक्त शर्करा प्रबंधन, लक्षण और दैनिक देखभाल दिनचर्या के बारे में जानें।"
-    },
-    {
-      title: "ಮಧುಮೇಹವನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು",
-      category: "Diabetes Care",
-      duration: "7 min read",
-      audioAvailable: true,
-      language: "Kannada",
-      languageCode: "kn-IN",
-      description: "ರಕ್ತದಲ್ಲಿನ ಸಕ್ಕರೆ ನಿರ್ವಹಣೆ, ಲಕ್ಷಣಗಳು ಮತ್ತು ದೈನಂದಿನ ಆರೈಕೆ ದಿನಚರಿಗಳ ಬಗ್ಗೆ ತಿಳಿಯಿರಿ."
-    },
-    {
       title: "Nutrition for Rural Communities",
       category: "Nutrition",
       duration: "4 min read",
@@ -200,24 +163,6 @@ const Education = () => {
       language: "English",
       languageCode: "en-US",
       description: "Affordable and nutritious meal planning with locally available foods."
-    },
-    {
-      title: "ग्रामीण समुदायों के लिए पोषण",
-      category: "Nutrition",
-      duration: "4 min read",
-      audioAvailable: true,
-      language: "Hindi",
-      languageCode: "hi-IN",
-      description: "स्थानीय रूप से उपलब्ध खाद्य पदार्थों के साथ किफायती और पौष्टिक भोजन योजना।"
-    },
-    {
-      title: "ಗ್ರಾಮೀಣ ಸಮುದಾಯಗಳಿಗೆ ಪೋಷಣೆ",
-      category: "Nutrition",
-      duration: "4 min read",
-      audioAvailable: true,
-      language: "Kannada",
-      languageCode: "kn-IN",
-      description: "ಸ್ಥಳೀಯವಾಗಿ ಲಭ್ಯವಿರುವ ಆಹಾರದೊಂದಿಗೆ ಕೈಗೆಟುಕುವ ಮತ್ತು ಪೌಷ್ಟಿಕ ಊಟ ಯೋಜನೆ."
     },
     {
       title: "Exercise for Beginners",
@@ -229,24 +174,6 @@ const Education = () => {
       description: "Start your fitness journey with simple, effective exercises."
     },
     {
-      title: "शुरुआती लोगों के लिए व्यायाम",
-      category: "Exercise",
-      duration: "5 min read",
-      audioAvailable: true,
-      language: "Hindi",
-      languageCode: "hi-IN",
-      description: "सरल, प्रभावी व्यायामों के साथ अपनी फिटनेस यात्रा शुरू करें।"
-    },
-    {
-      title: "ಆರಂಭಿಕರಿಗಾಗಿ ವ್ಯಾಯಾಮ",
-      category: "Exercise",
-      duration: "5 min read",
-      audioAvailable: true,
-      language: "Kannada",
-      languageCode: "kn-IN",
-      description: "ಸರಳ, ಪರಿಣಾಮಕಾರಿ ವ್ಯಾಯಾಮಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಫಿಟ್‌ನೆಸ್ ಪ್ರಯಾಣವನ್ನು ಪ್ರಾರಂಭಿಸಿ."
-    },
-    {
       title: "Pregnancy Nutrition",
       category: "Maternal Health",
       duration: "6 min read",
@@ -254,24 +181,6 @@ const Education = () => {
       language: "English",
       languageCode: "en-US",
       description: "Essential nutrients and diet tips during pregnancy."
-    },
-    {
-      title: "गर्भावस्था पोषण",
-      category: "Maternal Health",
-      duration: "6 min read",
-      audioAvailable: true,
-      language: "Hindi",
-      languageCode: "hi-IN",
-      description: "गर्भावस्था के दौरान आवश्यक पोषक तत्व और आहार युक्तियाँ।"
-    },
-    {
-      title: "ಗರ್ಭಾವಸ್ಥೆಯ ಪೋಷಣೆ",
-      category: "Maternal Health",
-      duration: "6 min read",
-      audioAvailable: true,
-      language: "Kannada",
-      languageCode: "kn-IN",
-      description: "ಗರ್ಭಾವಸ್ಥೆಯ ಸಮಯದಲ್ಲಿ ಅಗತ್ಯ ಪೋಷಕಾಂಶಗಳು ಮತ್ತು ಆಹಾರ ಸಲಹೆಗಳು."
     },
     {
       title: "Vaccination Schedule",
@@ -282,29 +191,11 @@ const Education = () => {
       languageCode: "en-US",
       description: "Complete guide to immunizations for children and adults."
     },
-    {
-      title: "टीकाकरण अनुसूची",
-      category: "Preventive Care",
-      duration: "5 min read",
-      audioAvailable: true,
-      language: "Hindi",
-      languageCode: "hi-IN",
-      description: "बच्चों और वयस्कों के लिए टीकाकरण की पूरी मार्गदर्शिका।"
-    },
-    {
-      title: "ಲಸಿಕೆ ವೇಳಾಪಟ್ಟಿ",
-      category: "Preventive Care",
-      duration: "5 min read",
-      audioAvailable: true,
-      language: "Kannada",
-      languageCode: "kn-IN",
-      description: "ಮಕ್ಕಳು ಮತ್ತು ವಯಸ್ಕರಿಗೆ ರೋಗನಿರೋಧಕಗಳ ಸಂಪೂರ್ಣ ಮಾರ್ಗದರ್ಶಿ."
-    },
   ];
 
   const featuredArticles = selectedCategory 
     ? allArticles.filter(article => article.category === selectedCategory)
-    : allArticles.filter(article => article.languageCode === "en-US").slice(0, 3);
+    : allArticles.slice(0, 3);
 
   const handleCategoryClick = (categoryTitle: string) => {
     setSelectedCategory(categoryTitle);
