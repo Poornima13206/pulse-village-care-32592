@@ -304,7 +304,7 @@ const Education = () => {
 
   const featuredArticles = selectedCategory 
     ? allArticles.filter(article => article.category === selectedCategory)
-    : allArticles.slice(0, 3);
+    : allArticles.filter(article => article.languageCode === "en-US").slice(0, 3);
 
   const handleCategoryClick = (categoryTitle: string) => {
     setSelectedCategory(categoryTitle);
