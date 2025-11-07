@@ -26,36 +26,8 @@ const Dashboard = () => {
     });
   };
 
-  const healthMetrics = [
-    { label: "Heart Rate", value: "72 bpm", icon: Heart, color: "text-emergency", trend: "normal" },
-    { label: "Blood Pressure", value: "120/80", icon: Activity, color: "text-primary", trend: "normal" },
-    { label: "Temperature", value: "98.6°F", icon: AlertCircle, color: "text-secondary", trend: "normal" },
-    { label: "Oxygen Level", value: "98%", icon: TrendingUp, color: "text-accent", trend: "good" },
-  ];
-
-  const recentActivities = [
-    { 
-      title: "Checkup Completed", 
-      time: "2 hours ago", 
-      icon: CheckCircle, 
-      color: "text-secondary",
-      description: "Annual health screening"
-    },
-    { 
-      title: "Medicine Delivered", 
-      time: "Yesterday", 
-      icon: Pill, 
-      color: "text-accent",
-      description: "Monthly prescription refill"
-    },
-    { 
-      title: "Video Consultation", 
-      time: "3 days ago", 
-      icon: Phone, 
-      color: "text-primary",
-      description: "Dr. Sharma - Follow-up"
-    },
-  ];
+  // Recent activities - dynamic data
+  const recentActivities: any[] = [];
 
   const upcomingAppointments = [
     { 
@@ -96,33 +68,6 @@ const Dashboard = () => {
           />
         </Card>
 
-        {/* Health Metrics */}
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold text-foreground mb-4">Current Vitals</h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {healthMetrics.map((metric, index) => (
-              <Card 
-                key={index} 
-                className="p-6 hover:shadow-md transition-all duration-300 cursor-pointer hover:-translate-y-1"
-                onClick={() => toast({
-                  title: metric.label,
-                  description: `Current reading: ${metric.value} - Status: ${metric.trend}`
-                })}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <metric.icon className={`w-6 h-6 ${metric.color}`} />
-                  <span className={`text-xs font-medium px-2 py-1 rounded-full ${
-                    metric.trend === 'normal' ? 'bg-secondary/10 text-secondary' : 'bg-accent/10 text-accent'
-                  }`}>
-                    {metric.trend}
-                  </span>
-                </div>
-                <div className="text-3xl font-bold text-foreground mb-1">{metric.value}</div>
-                <div className="text-sm text-muted-foreground">{metric.label}</div>
-              </Card>
-            ))}
-          </div>
-        </div>
 
         <div className="grid lg:grid-cols-2 gap-8 mb-8">
           {/* Recent Activities */}
@@ -131,20 +76,27 @@ const Dashboard = () => {
               <Activity className="w-6 h-6 text-primary" />
               Recent Activities
             </h2>
-            <div className="space-y-4">
-              {recentActivities.map((activity, index) => (
-                <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
-                  <div className={`w-10 h-10 rounded-full bg-background flex items-center justify-center flex-shrink-0`}>
-                    <activity.icon className={`w-5 h-5 ${activity.color}`} />
+            {recentActivities.length === 0 ? (
+              <div className="text-center py-12 text-muted-foreground">
+                <Activity className="w-12 h-12 mx-auto mb-3 opacity-30" />
+                <p className="text-lg">No recent activities</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {recentActivities.map((activity, index) => (
+                  <div key={index} className="flex items-start gap-4 p-4 rounded-lg bg-muted/50 hover:bg-muted transition-colors">
+                    <div className={`w-10 h-10 rounded-full bg-background flex items-center justify-center flex-shrink-0`}>
+                      <activity.icon className={`w-5 h-5 ${activity.color}`} />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-semibold text-foreground">{activity.title}</div>
+                      <div className="text-sm text-muted-foreground">{activity.description}</div>
+                      <div className="text-xs text-muted-foreground mt-1">{activity.time}</div>
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-foreground">{activity.title}</div>
-                    <div className="text-sm text-muted-foreground">{activity.description}</div>
-                    <div className="text-xs text-muted-foreground mt-1">{activity.time}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </Card>
 
           {/* Upcoming Appointments */}
@@ -173,10 +125,12 @@ const Dashboard = () => {
                   <div className="text-sm font-medium text-foreground">{appointment.date}</div>
                 </div>
               ))}
-              <Button className="w-full" variant="outline">
-                <Calendar className="w-4 h-4 mr-2" />
-                Schedule New Appointment
-              </Button>
+              <Link to="/schedule-appointment">
+                <Button className="w-full" variant="outline">
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Schedule New Appointment
+                </Button>
+              </Link>
             </div>
           </Card>
         </div>

@@ -5,12 +5,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Index from "./pages/Index";
 import Dashboard from "./pages/Dashboard";
-import Emergency from "./pages/Emergency";
+import Emergency from "./pages/EmergencyUpdated";
 import Medicine from "./pages/Medicine";
 import Records from "./pages/Records";
 import Education from "./pages/Education";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
+import ScheduleAppointment from "./pages/ScheduleAppointment";
 import { useAuth } from "./hooks/useAuth";
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -43,6 +44,7 @@ const App = () => (
           <Route path="/medicine" element={<ProtectedRoute><Medicine /></ProtectedRoute>} />
           <Route path="/records" element={<ProtectedRoute><Records /></ProtectedRoute>} />
           <Route path="/education" element={<ProtectedRoute><Education /></ProtectedRoute>} />
+          <Route path="/schedule-appointment" element={<ProtectedRoute><ScheduleAppointment /></ProtectedRoute>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
