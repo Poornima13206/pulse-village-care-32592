@@ -29,20 +29,7 @@ const Dashboard = () => {
   // Recent activities - dynamic data
   const recentActivities: any[] = [];
 
-  const upcomingAppointments = [
-    { 
-      title: "Health Worker Visit", 
-      date: "Tomorrow, 10:00 AM",
-      doctor: "Nurse Priya",
-      type: "Home Visit"
-    },
-    { 
-      title: "Video Consultation", 
-      date: "May 15, 3:00 PM",
-      doctor: "Dr. Kumar",
-      type: "Follow-up"
-    },
-  ];
+  const upcomingAppointments: any[] = [];
 
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-8">

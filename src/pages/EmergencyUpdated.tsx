@@ -26,6 +26,8 @@ const Emergency = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [emergencyContacts, setEmergencyContacts] = useState<any[]>([]);
   const [nearbyHospitals, setNearbyHospitals] = useState<any[]>([]);
+  const [personalContacts, setPersonalContacts] = useState<any[]>([]);
+  const [newContact, setNewContact] = useState<{ name: string; number: string }>({ name: "", number: "" });
 
   useEffect(() => {
     // Get user's location
@@ -52,7 +54,17 @@ const Emergency = () => {
     }
   }, []);
 
-  const loadNearbyDoctors = (location: { lat: number; lng: number }) => {
+  // Load saved personal emergency contacts
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('personal_emergency_contacts');
+      if (saved) setPersonalContacts(JSON.parse(saved));
+    } catch (e) {
+      console.error('Failed to load personal contacts', e);
+    }
+  }, []);
+ 
+   const loadNearbyDoctors = (location: { lat: number; lng: number }) => {
     // In real app, this would fetch from an API based on location
     setEmergencyContacts([
       { 
@@ -303,7 +315,71 @@ const Emergency = () => {
           </Card>
         </div>
 
-        {/* Nearby Hospitals */}
+        {/* Personal Emergency Contacts */}
+        <Card className="p-6">
+          <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+            <Phone className="w-6 h-6 text-secondary" />
+            Personal Emergency Contacts
+          </h2>
+          <div className="grid md:grid-cols-3 gap-3 mb-4">
+            <Input 
+              placeholder="Name"
+              value={newContact.name}
+              onChange={(e) => setNewContact({ ...newContact, name: e.target.value })}
+            />
+            <Input 
+              placeholder="Phone number"
+              value={newContact.number}
+              onChange={(e) => setNewContact({ ...newContact, number: e.target.value })}
+            />
+            <Button onClick={() => {
+              if (!newContact.name.trim() || !newContact.number.trim()) {
+                toast({ title: 'Missing info', description: 'Enter a name and phone number', variant: 'destructive' });
+                return;
+              }
+              const contact = { ...newContact, icon: User, available: true, distance: 'Saved' };
+              const updated = [...personalContacts, contact];
+              setPersonalContacts(updated);
+              localStorage.setItem('personal_emergency_contacts', JSON.stringify(updated));
+              setNewContact({ name: '', number: '' });
+              toast({ title: 'Contact added', description: `${contact.name} saved` });
+            }}>Add</Button>
+          </div>
+          {personalContacts.length === 0 ? (
+            <div className="text-sm text-muted-foreground">No personal contacts added.</div>
+          ) : (
+            <div className="space-y-3">
+              {personalContacts.map((contact, idx) => (
+                <div key={idx} className="flex items-center justify-between p-4 rounded-lg bg-muted/50">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center">
+                      <User className="w-5 h-5 text-secondary" />
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">{contact.name}</div>
+                      <div className="text-sm text-muted-foreground">{contact.number}</div>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button size="sm" onClick={() => window.open(`tel:${contact.number}`, '_self')}>
+                      <Phone className="w-4 h-4 mr-1" /> Call
+                    </Button>
+                    <Button size="sm" variant="outline" onClick={() => {
+                      const updated = personalContacts.filter((_, i) => i !== idx);
+                      setPersonalContacts(updated);
+                      localStorage.setItem('personal_emergency_contacts', JSON.stringify(updated));
+                      toast({ title: 'Contact removed' });
+                    }}>
+                      Remove
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </Card>
+ 
+         {/* Nearby Hospitals */}
         <Card className="p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-2xl font-bold text-foreground flex items-center gap-2">
@@ -344,15 +420,53 @@ const Emergency = () => {
                       <span>Beds: {hospital.beds}</span>
                     </div>
                   </div>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="w-full"
-                    onClick={() => window.open(googleMapsUrl, '_blank')}
-                  >
-                    <NavigationIcon className="w-4 h-4 mr-2" />
-                    Get Directions
-                  </Button>
+                  <div className="grid grid-cols-3 gap-2">
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      disabled={!userLocation}
+                      onClick={() => {
+                        if (!userLocation) {
+                          toast({ title: 'Location Required', description: 'Enable location to get driving directions', variant: 'destructive' });
+                          return;
+                        }
+                        const url = `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${hospital.lat},${hospital.lng}&travelmode=driving`;
+                        window.open(url, '_blank');
+                      }}
+                    >
+                      Drive
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      disabled={!userLocation}
+                      onClick={() => {
+                        if (!userLocation) {
+                          toast({ title: 'Location Required', description: 'Enable location to get walking directions', variant: 'destructive' });
+                          return;
+                        }
+                        const url = `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${hospital.lat},${hospital.lng}&travelmode=walking`;
+                        window.open(url, '_blank');
+                      }}
+                    >
+                      Walk
+                    </Button>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      disabled={!userLocation}
+                      onClick={() => {
+                        if (!userLocation) {
+                          toast({ title: 'Location Required', description: 'Enable location to get transit directions', variant: 'destructive' });
+                          return;
+                        }
+                        const url = `https://www.google.com/maps/dir/?api=1&origin=${userLocation.lat},${userLocation.lng}&destination=${hospital.lat},${hospital.lng}&travelmode=transit`;
+                        window.open(url, '_blank');
+                      }}
+                    >
+                      Transit
+                    </Button>
+                  </div>
                 </Card>
               );
             })}
